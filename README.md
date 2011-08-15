@@ -23,8 +23,8 @@ http://code.google.com/p/sympy/issues/csv?q=... (note that this is the
 same thing that you get by clicking the "CSV" link at the bottom of the
 issues list).
 
-For more advanced stuff, like parsing comments, you will have to use the
-Google Code Python API
+For more advanced stuff, like parsing comments or making changes, you
+will have to use the Google Code Python API
 (http://code.google.com/p/support/wiki/IssueTrackerAPIPython) or HTTP
 API (http://code.google.com/p/support/wiki/IssueTrackerAPI).  I've had
 limited luck with this.  From what I tried, the Python API only returns
@@ -35,7 +35,7 @@ probably I was doing it wrong.
 
 - Port all scripts to Python 3.
 - Give command line options to the scripts.
-- Write more cool tools!
+- Write more cool tools! (see the Ideas for New Scripts section below)
 
 ## License
 
@@ -46,3 +46,17 @@ LICENSE file).  Feel free to use the code here however you like.
 
 Please fork this project and improve it.  Add new scripts, or improve
 already existing ones.
+
+## Ideas for New Scripts
+
+- We keep pushing in pull requests but forgetting to close the issue. 
+Write a script that somehow fixes this problem.  Perhaps it uses a
+heuristic that checks for open issues with a pull request in a comment
+and flags it if the pull request is closed.
+
+- http://code.google.com/p/support/issues/detail?id=5446 requests the
+ability to work with the number of comments as a column spec.  Until
+this is implemented, it would be cool to write a little script that
+shows how many comments each issue has and sorts them by that.
+
+- *Add your cool idea here*
