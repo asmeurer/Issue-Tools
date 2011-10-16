@@ -59,4 +59,9 @@ ability to work with the number of comments as a column spec.  Until
 this is implemented, it would be cool to write a little script that
 shows how many comments each issue has and sorts them by that.
 
+- Get some interesting statistics from the issues, and plot them.  For
+example, plot how many issues are closed for each day and how many
+issues are opened for each day.  For SymPy, you could try parsing
+http://groups.google.com/group/sympy-issues for historical data.
+
 - *Add your cool idea here*
