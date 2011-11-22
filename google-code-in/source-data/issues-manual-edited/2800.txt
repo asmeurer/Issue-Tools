@@ -1,0 +1,2 @@
+We have a page on the wiki [SymPy-Papers](https://github.com/sympy/sympy/wiki/SymPy-Papers) that should list (scientific) papers mentioning SymPy, but it's currently empty. Populating this would be interesting and could also persuade other academics to try out/use SymPy. Google Scholar can be used to track down papers. See also the [thread which originally asked about this](https://groups.google.com/group/sympy/browse_thread/thread/34443bd5708310f2/71c0cc0ba21a19e1?hl=en).
+

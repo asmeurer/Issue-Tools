@@ -1,0 +1,1 @@
+The interface at live.sympy.org should be improved, so that it looks and feels nicer, perhaps using some more advanced html5/css, etc.

@@ -1,0 +1,17 @@
+
+```
+    /home/matt/hg/sympy/sympy/core/basic_methods.py in __getattr__(cls, name)
+    216         try: return MetaBasicMeths.classnamespace[name]
+    217         except KeyError: pass
+--> 218         raise AttributeError("'%s' object has no attribute '%s'"%
+    219                              (cls.__name__, name))
+    220 
+```
+
+AttributeError: 'Basic' object has no attribute 'Log'.
+
+Some time ago functions were renamed but in many places there are old names
+left, this should be fixed soon.
+
+And especially tests need to be written to catch these bugs. Because what is
+not tested for is broken.

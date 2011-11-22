@@ -1,0 +1,14 @@
+Edit the doc-string to add list of other function that are closely related to the query.
+
+
+This is the list of .py files which contains the functions.
+
+```
+sympy/integrals/deltafunctions.py
+sympy/integrals/integrals.py
+sympy/integrals/risch.py
+sympy/integrals/rationaltools.py
+sympy/integrals/trigonometry.py
+```
+
+There are around 19 functions which one needs to understand (the input parameters and final result and not the code) to interrelate them.

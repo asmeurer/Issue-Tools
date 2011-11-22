@@ -1,0 +1,1 @@
+Implement the algorithm for trigonometric simplification from the paper "Automated and readable simplification of trigonometric expressions" by Fu, et. al. (you should be able to find the paper for free from Google Scholar, otherwise email me and I will send it to you).

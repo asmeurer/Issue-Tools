@@ -1,0 +1,1 @@
+KroneckerDelta would be useful for more than just quantum physics.  I think it should be moved into the functions module and imported with `from sympy import *`.

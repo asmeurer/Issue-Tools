@@ -1,0 +1,7 @@
+Two things on my wish list for testing;
+
+1) a coverage fingerprint of master would be compared to a given branch's coverage profile to make sure that no line has become uncovered.
+
+2) a report of lines added that are not covered would be reported with the test-bot report.
+
+Someone who likes parsing html ([beautiful soup](www.crummy.com/software/BeautifulSoup/) might help with this) might enjoy this as a project.

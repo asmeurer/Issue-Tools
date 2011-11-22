@@ -1,0 +1,9 @@
+
+```py
+>>> isinstance(oo, Rational)
+True
+>>> oo.is_rational
+True
+```
+
+This is clearly wrong. Infinity is not a rational number.

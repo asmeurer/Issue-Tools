@@ -1,0 +1,17 @@
+Now that we don't support Python 2.4, we can use with statement context managers.  One of the best places to use this is when opening a file.  You can do
+
+```py
+with open(file) as f:
+    do stuff
+```
+instead of 
+
+```py
+f = open(file)
+do stuff
+f.close()
+```
+
+And it's not only more readable, but also the with statement context manager will automatically close the file, even if an exception is raised. 
+
+There are a handful of places in the code where we open() stuff (do git grep "open\(").  Remember that to support the with statement in Python 2.5, you have to add "from __future__ import with_statement" to the top of the file.

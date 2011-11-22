@@ -1,0 +1,1 @@
+We can have several Code-In tasks for this.  Create some video tutorials for SymPy, and upload them to some SymPy channel on YouTube.

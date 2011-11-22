@@ -1,0 +1,11 @@
+Integral.transform is confusing, since it requires you to use the same integration variable.  But usually, when we do a transfrom on an integral we change the name of the variable.  It should allow something like
+
+```py
+Integral.transform(x, 2*y, y)
+```
+
+where y is the new variable.  The third argument would default to the integration variable, so that you can still use the current syntax.
+
+Also, the docstring needs some doctests, which would also make it less confusing.
+
+Related is [issue 2297: Integral manipulations](http://code.google.com/p/sympy/issues/detail?id=2297)

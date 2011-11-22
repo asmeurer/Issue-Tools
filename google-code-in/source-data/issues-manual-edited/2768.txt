@@ -1,0 +1,1 @@
+It would be cool to have a little feed at the right on live.sympy.org to show what other people are entering, so that people can see what sorts of things are being done.  Of course, you should be able to disable this for your own entries, for privacy reasons.  It should allow you to input the same expression in your session and execute it.

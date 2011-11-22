@@ -1,0 +1,1 @@
+SymPy uniformly uses `\operatorname` when latex printing functions. However, tex engine in matplotlib doesn't support it. It would be convenient to use `\functionname` directly whenever possible (trigonometric and hyperbolic functions, exp, log and maybe other).

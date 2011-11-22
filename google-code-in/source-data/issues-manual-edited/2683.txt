@@ -1,0 +1,1 @@
+As noted at [maillist](http://groups.google.com/group/sympy/browse_thread/thread/ba37b597b851df7c#), `det()` is called when inverting a `Matrix` with the GE method.  This is used only the check if it is non-degenerate.  This should instead be checked by the output of `rref()`.

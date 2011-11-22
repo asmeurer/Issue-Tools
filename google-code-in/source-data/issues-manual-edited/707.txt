@@ -1,0 +1,3 @@
+Move all wikis from [code.google.com](http://code.google.com/p/sympy/w/list) to
+[github](https://github.com/sympy/sympy/wiki).
+So that we have just one source of documentation to reduce confusion.

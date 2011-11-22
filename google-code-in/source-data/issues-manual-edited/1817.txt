@@ -1,0 +1,4 @@
+See [maillist](http://groups.google.com/group/sympy/browse_thread/thread/f3b1ddc8b6333748)
+
+The idea is to make a cheat sheet for sympy, similar to PSageMath quickref](http://wiki.sagemath.org/quickref)
+

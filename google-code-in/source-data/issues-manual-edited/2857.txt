@@ -1,0 +1,37 @@
+It seems that sqrt(2).is_irrational should return True
+
+Also, in a recent commit (ebe8a7e) it is noted that Add and Mul's implementation was faulty:
+
+```
+    The function used to return True if any factor was irrational.
+    This is nonsense: neither I*pi, nor sqrt(8)/sqrt(2) are irrational.
+    [One might argue about I*pi, but irrational implies real under the
+    current assumptions system.]
+    
+    We now return True iff there is exactly one irrational factor and
+    all other factors are rational.
+```
+
+In a Mul, any irrationals join together if their args are Rationals:
+
+```
+>>> sqrt(2)*sqrt(5)
+sqrt(10)
+>>> sqrt(S.Half)*sqrt(3)
+sqrt(6)/2
+>>> sqrt(2)*sqrt(2+sqrt(3))
+sqrt(2)*sqrt(sqrt(3) + 2)
+```
+
+So the argument about `sqrt(8)/sqrt(2)` doesn't apply. But it does make sense that the only way you can know that something is irrational is to have only one irrational factor since something like `sqrt(2+sqrt(3))*sqrt(2-sqrt(3))` might appear irrational with two irrational factors, but this is just a fancy 1:
+
+```py
+>>> sqrt(2-sqrt(3))*sqrt(2+sqrt(3))
+sqrt(-sqrt(3) + 2)*sqrt(sqrt(3) + 2)
+>>> _.n()
+1.00000000000000
+```
+
+Perhaps the routine could see if all irrationals present have a Number argument so `sqrt(2)*root(3,3)` could give True for is_irrational.
+
+The same sort of problems exist for Add: while `sqrt(2) + sqrt(6)` is definitely irrational (though sympy gives None for the answer); something like `sqrt(2)/3 + sqrt(-6*sqrt(2) + 11)/3` is, again, just a fancy 1.

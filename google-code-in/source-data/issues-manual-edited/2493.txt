@@ -1,0 +1,1 @@
+`test_lambdify.py` has a bunch of try blocks that should be using `raises()`.

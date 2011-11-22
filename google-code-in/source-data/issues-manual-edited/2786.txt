@@ -1,0 +1,1 @@
+All tests decorated with @SKIP("TODO: sympy.physics") must be fixed.

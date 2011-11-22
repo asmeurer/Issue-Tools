@@ -1,0 +1,1 @@
+We should document the differences between SymPy and other mathematical systems.  For Code-In, a task should be for one other system.

@@ -1,0 +1,1 @@
+The manpage for isympy (doc/man/isympy) needs to be updated with all the latest options, etc.

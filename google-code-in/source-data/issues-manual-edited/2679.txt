@@ -1,0 +1,13 @@
+There are some .py files in doc/src/modules/galgebra/GA which have some strange indentation (and aren't valid Python source files either). Aaron also noticed this and they produce (harmless) errors when 2to3 is ran on them. I've finally had a chance to look at them and they seem to be included in the main GA module documentation, GAsympy.txt. In fact, they seem to be used like a doctest - the first part of the file (indented) are the comments that produce the second half of the file (not indented). These should be converted to be actual doctests. 
+
+Those files also haven't been touched since 2009 so it's not clear to me if anyone is even using this part of SymPy now, but fixing the docs shouldn't be too hard and can be a good introduction to SymPy for an interested developer (hence, I'm putting the EasyToFix tag here). Also, I don't think these files are ran as part of the doctest suite which means errors might be creeping in and we'd like to avoid this.
+
+For the record, here are the errors produced when 2to3 is ran on these files:
+
+```
+RefactoringTool: Can't parse sympy-py3k/./doc/src/modules/galgebra/GA/reciprocalframeGAtest.py: ParseError: bad input: type=5, value='        ', context=('', (1, 0))
+RefactoringTool: Can't parse sympy-py3k/./doc/src/modules/galgebra/GA/headerGAtest.py: ParseError: bad input: type=0, value='', context=('\n', (26, 0))
+RefactoringTool: Can't parse sympy-py3k/./doc/src/modules/galgebra/GA/conformalgeometryGAtest.py: ParseError: bad input: type=5, value='        ', context=('', (1, 0))
+RefactoringTool: Can't parse sympy-py3k/./doc/src/modules/galgebra/GA/BasicGAtest.py: ParseError: bad input: type=5, value='        ', context=('', (1, 0))
+RefactoringTool: Can't parse sympy-py3k/./doc/src/modules/galgebra/GA/hyperbolicGAtest.py: ParseError: bad input: type=5, value='        ', context=('', (1, 0))
+```

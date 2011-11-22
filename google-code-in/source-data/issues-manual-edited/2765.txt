@@ -1,0 +1,14 @@
+See https://github.com/sympy/sympy/wiki/Assumptions and some threads on the mailing list, as well as any issue with the Assumptions label.  We have two assumptions systems in SymPy, the old system, which works like 
+
+```
+>>> x = Symbol('x', positive=True)
+>>> x.is_positive
+True
+```
+
+and the new system, which works like
+
+```
+>>> ask(Q.positive(x), Q.positive(x))
+True
+```

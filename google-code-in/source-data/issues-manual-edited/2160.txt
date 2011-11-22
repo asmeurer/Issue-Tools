@@ -1,0 +1,2 @@
+We should include in the README, and probably in the docs somewhere too, a list of all the "dependencies" of SymPy.  Now, obviously, SymPy's only dependency is Python, but there are several optional dependencies like IPython and gmpy that are not required but extent the capabilities of SymPy if they are installed. 
+

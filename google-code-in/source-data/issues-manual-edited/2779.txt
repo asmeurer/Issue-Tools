@@ -1,0 +1,18 @@
+Edit the doc-string to add list of other function that are closely related to the query.
+
+
+This is the list of .py files which contains the functions.
+
+```
+sympy/geometry/curve.py
+sympy/geometry/ellipse.py
+sympy/geometry/entity.py
+sympy/geometry/exceptions.py
+sympy/geometry/__init__.py
+sympy/geometry/line.py
+sympy/geometry/point.py
+sympy/geometry/polygon.py
+sympy/geometry/util.py
+```
+
+There are around 150 functions which one needs to understand (the input parameters and final result and not the code) to interrelate them.

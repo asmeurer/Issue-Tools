@@ -1,0 +1,26 @@
+So my comment 8 from <a title="Arbitrary constants in indefinite integration"  href="/p/sympy/issues/detail?id=2219">issue 2219</a> made me realize something.  Consider the following:
+
+
+    >>> integrate(x**2*exp(x)*sin(x), x)
+       x           2  x                  x                  2         x
+      ℯ ⋅sin(x)   x ⋅ℯ ⋅sin(x)   cos(x)⋅ℯ              x   x ⋅cos(x)⋅ℯ 
+    - ───────── + ──────────── - ───────── + x⋅cos(x)⋅ℯ  - ────────────
+          2            2             2                          2      
+
+    >>> dsolve(f(x).diff(x) - x**2*exp(x)*sin(x), f(x), hint='nth_linear_constant_coeff_undetermined_coefficients')
+                 x           2  x                  x                  2         x
+                ℯ ⋅sin(x)   x ⋅ℯ ⋅sin(x)   cos(x)⋅ℯ              x   x ⋅cos(x)⋅ℯ 
+    f(x) = C₁ - ───────── + ──────────── - ───────── + x⋅cos(x)⋅ℯ  - ────────────
+                    2            2             2                          2      
+
+```
+>>> %timeit integrate(x**2*exp(x)*sin(x), x)
+1 loops, best of 3: 10.7 s per loop
+
+>>>  %timeit dsolve(f(x).diff(x) - x**2*exp(x)*sin(x), f(x), hint='nth_linear_constant_coeff_undetermined_coefficients')
+1 loops, best of 3: 232 ms per loop
+```
+
+`dsolve()` is way faster because it just computes the necessary form of the integral and solves for the undetermined coefficients.  No complicated integration algorithm is needed.  
+
+So I think if the integral has the correct form, that internally `integrate(expr, x, x, ...)` should use dsolve's internal undetermined coefficient algorithms for solving `f(x).diff(x, x, …)` - expr.  All the necessary stuff is already in ode.py, including the function that checks if expr is of the correct form.

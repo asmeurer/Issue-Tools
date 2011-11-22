@@ -1,0 +1,14 @@
+Edit the doc-string to add list of other function that are closely related to the query.
+
+
+This is the list of .py files which contains the functions.
+
+```
+sympy/combinatorics/generators.py  
+sympy/combinatorics/prufer.py
+sympy/combinatorics/graycode.py
+sympy/combinatorics/permutations.py  
+sympy/combinatorics/subsets.py
+```
+
+There are around 98(at max) functions which one needs to understand (the input parameters and final result and not the code) to interrelate them.

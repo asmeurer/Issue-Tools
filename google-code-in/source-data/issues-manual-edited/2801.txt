@@ -1,0 +1,9 @@
+lambdify() is one of most important functions in SymPy (for interoperability with numerical libraries the most important). However it's not mentioned anywhere, although it has a good docstring. The result of `git grep` stands for itself:
+
+$ git grep lambdify doc/
+doc/src/aboutus.txt:#. Sebastian Krämer: implemented lambdify/numpy/mpmath cooperation, bug fixes, refactoring, lambdifying of matrices, large printing refactoring and bugfixes
+doc/src/aboutus.txt:#. Andrew Straw: lambdify() improvements
+doc/src/aboutus.txt:#. Matthew Brett: fixes to lambdify
+doc/src/modules/physics/mechanics/examples.txt:maximum recursion depth being exceeded; I also tried lambdifying this, and it
+
+lambdify's docstring must be pulled into docs (there is already a generic issue for this), but we also need a good tutorial showing users how to cooperate with NumPy, SciPy etc. This issue (not the only one by the way) was pointed out to me by Fernando Perez during my stay at Berkeley this week, when trying to solve a practical symbolic-numeric problem. SymPy has already *a lot* of features, but unfortunately most of them are deeply buried in the internals of SymPy and known only to its developers. Also we have to check what does ufuncify() do, because it was reported to me that it's extremely slow.

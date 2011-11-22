@@ -1,0 +1,19 @@
+```
+> @@ -542,7 +542,11 @@ def test_1st_homogeneous_coeff_ode_check3():
+>      # (False, x*(log(exp(-LambertW(C1*x))) + LambertW(C1*x))*exp(-LambertW(C1*x) + 1))
+>      eq3 = f(x) + (x*log(f(x)/x) - 2*x)*diff(f(x),x)
+>      sol3 = Eq(f(x), x*exp(1 - LambertW(C1*x)))
+> -    assert checkodesol(eq3, sol3, solve_for_func=False)[0]
+> +    assert checkodesol(eq3, sol3, solve_for_func=True)[0]
+> +    # and without an assumption about x and f(x), the implicit form doesn't resolve, either:
+> +    # (False, (log(f(x)/x) + log(x/f(x)))*f(x))
+```
+
+So `checkodesol()` needs to be more aggressive, since `dsolve()` obtains these logarithms by calling `logcombine(force=True)`. An expand with `force=True` should be used on expressions being tested or else (as shown above) terms which should go to zero, don't:
+
+```py
+>>> log(f(x)/x) + log(x/f(x))
+log(f(x)/x) + log(x/f(x))
+>>> _.expand(force=True)
+0
+```

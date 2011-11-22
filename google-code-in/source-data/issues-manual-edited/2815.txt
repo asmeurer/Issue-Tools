@@ -1,0 +1,3 @@
+The code there is a bit hard to read. It would be nice to have it refactored so it follows PEP8.
+
+There are certain parts that are not pythonic but that's another problem needing more in-depth refactoring.

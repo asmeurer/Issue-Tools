@@ -1,0 +1,1 @@
+You can open the IPython qtconsole with a sympy session by typing `IPython qtconsole --profile=sympy`, but you should also be able to do it by typing `isympy -c ipython-qtconsole`.  Unlike the former, the latter should perhaps not rely on IPython's built-in sympy profile to work.

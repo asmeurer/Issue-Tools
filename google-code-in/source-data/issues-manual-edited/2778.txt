@@ -1,0 +1,19 @@
+Edit the doc-string to add list of other function that are closely related to the query.
+
+
+This is the list of .py files which contains the functions.
+
+```
+sympy/functions/special/zeta_functions.py
+sympy/functions/special/delta_functions.py
+sympy/functions/special/tensor_functions.py
+sympy/functions/special/hyper.py
+sympy/functions/special/bsplines.py
+sympy/functions/special/spherical_harmonics.py
+sympy/functions/special/gamma_functions.py
+sympy/functions/special/bessel.py
+sympy/functions/special/polynomials.py
+sympy/functions/special/error_functions.py
+```
+
+There are around 62 functions which one needs to understand (the input parameters and final result and not the code) to interrelate them.

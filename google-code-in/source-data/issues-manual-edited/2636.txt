@@ -1,0 +1,33 @@
+We should pretty print Product with a big capital Pi.  Something like
+
+
+    >>> product(f(k), (k, 1, n))
+      n
+    -----
+    |   | f(k)
+    |   |
+    k = 1
+    ```
+
+    in ascii, and 
+
+    ```
+    >>> product(f(k), (k, 1, n))
+      n
+    ┌───┐
+    │   │ f(k)
+    │   │
+    k = 1
+    ```
+
+    in unicode. Or, better, for unicode, do
+
+    ```
+      n
+    ┬───┬
+    │   │ f(k)
+    │   │
+    k = 1
+
+
+So it looks more like the capital Pi at http://en.wikipedia.org/wiki/Multiplication#Capital_Pi_notation.  I couldn't find a character as tall as │ but with a horizontal line at the bottom.

@@ -1,0 +1,3 @@
+Currently, the rewrite framework only allows `expr.rewrite(function)` (e.g., `cos(x).rewrite(exp)`), and it implements only one rule per function pair.  This should be made more general.  Sometimes, you can't express a rewrite rule with just a function.  Other times, there is more than one way to rewrite one function in terms of another (for example `cos(x) == sqrt(1 - sin(x)) == sin(pi/2 - x)`).  
+
+The issue is to consider ways to make the rewrite framework stronger, but still modular like it is now (so it's easily extensible).

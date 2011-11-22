@@ -1,0 +1,20 @@
+The result of `integrate(cos(x)/sin(x)**n, x)` is
+"nice", if n is even, and "ugly", if n is odd
+(n is an integer, greater than 1).
+
+Moreover, if n is odd, then `diff(integrate(cos(x)/sin(x)**n, x), x)`
+gives a very ugly expression that cannot be converted back to
+`cos(x)/sin(x)**n` by simplify.
+
+Example:
+
+
+    >>> diff(integrate(cos(x)/sin(x)**7, x), x)
+                 5                   3                      
+    36⋅sin(x)⋅cos (x) - 72⋅sin(x)⋅cos (x) + 36⋅sin(x)⋅cos(x)
+    ────────────────────────────────────────────────────────
+                                                    2       
+           ⎛     6            4            2       ⎞        
+           ⎝6⋅cos (x) - 18⋅cos (x) + 18⋅cos (x) - 6⎠        
+
+

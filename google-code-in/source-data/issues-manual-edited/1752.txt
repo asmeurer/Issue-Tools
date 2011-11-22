@@ -1,0 +1,6 @@
+Two things annoy me about `./setup.py test`.  First, if a regular test fails, then it does not run the 
+doctests.  But this is supposed to be a shortcut to both the regular tests and the doctests in one.  
+Second, if you keyboard interrupt during the tests, it then proceeds to run the doctests.  But when I 
+keyboard interrupt, I want it to stop the whole script.  
+
+I don't know how easy it would be to change the second item, but the first one should be fixable.

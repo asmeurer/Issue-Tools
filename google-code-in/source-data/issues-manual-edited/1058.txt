@@ -1,0 +1,30 @@
+
+Finish this innovation.
+
+I've written some code for determining the "class" of a formula. The
+function classify(expr, x) walks the expression top-down and at each level
+classifies it as a function of x. It distinguishes between various classes
+of functions, including:
+
+* linear expressions
+* polynomials (degree > 1)
+* rational functions
+* algebraic roots
+* exponentials
+* logarithms
+* trigonometric functions
+* etc
+
+It then recursively classifies all subexpressions and returns the path with
+the "greatest" complexity. The following test outputs should hopefully make
+it more clear:
+
+```py
+pi []
+1 + 3*x [LINEAR]
+3*x + x**2 [POLYNOMIAL]
+2*x + exp(1 + 2*x) + exp(4 + 3*x) [LINEAR, EXP, LINEAR]
+2*x + (exp(3*x) + exp(1 + x))/(1 + 5*x) [RATIONAL, EXP, LINEAR]
+2*x + sin(1 + 2*x)**2 + cos(4 + x)**4 [POLYNOMIAL, TRIGONOMETRIC, LINEAR]
+```
+

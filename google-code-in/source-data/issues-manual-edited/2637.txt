@@ -1,0 +1,35 @@
+I've been looking into how to pretty print the Sigma using unicode.  Here's what I've got so far:
+
+This is what we do for ascii:
+
+```
+  n         
+ __         
+ \ `        
+  )   2⋅f(k)
+ /_,        
+k = 1       
+```
+
+Here's the best unicode I have so far:
+
+
+       n       
+      __       
+      ╲       
+       )   f(k)
+      ╱
+      ‾‾      
+     k = 1     
+
+
+I couldn't find characters (yet) to replicate ` and , (the new horizontal lines are at a different height).  I also haven't found a better replacement for ).
+
+There are these unicode symbols
+
+
+    ⎲
+    ⎳
+
+
+(\u23b2 and \u23b3, respectively) which take up more than one character of space in my terminal (both width and height) and would actually look kind of nice for summations of that size.  So this is the issue from https://github.com/sympy/sympy/pull/389 again.  How do we programmatically tell if a symbol takes up more than one character space, and if so, how many?

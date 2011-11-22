@@ -1,0 +1,11 @@
+See http://readthedocs.org/docs/sympy/en/latest/  It just shows
+
+"""
+This is an automaticaly generated API documentation from SymPy sources.
+
+Click the “modules” (Module Index) link in the top right corner to browse the modules.
+
+Or click the “index” to see an index of all SymPy functions, methods and classes.
+"""
+
+and that's it.

@@ -1,0 +1,5 @@
+Let's get inspired by ginac. This code should make it easy to compute for
+example einstein equations from the (symbolic) metric tensor. We can do it
+already now, but it would be nice to type in equations in the index form as
+found in the general relativity books and then just plug in a symbolic
+matrix for the metric tensor, and it would figure all the rest by itself.

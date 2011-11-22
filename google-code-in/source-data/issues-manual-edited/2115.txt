@@ -1,0 +1,3 @@
+Everything from here http://code.google.com/p/sympy/source/browse/ needs to be moved either to the GitHub wiki or the main repo.  Details on how to checkout the files on your computer are here: http://code.google.com/p/sympy/source/checkout.  Does anyone know how to transfer svn to git without losing the history?
+
+By the way, this includes the Google Code wiki pages in it.

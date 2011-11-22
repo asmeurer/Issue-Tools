@@ -1,0 +1,6 @@
+I think there should soon be documentation in the code for most, if not
+all, of the classes and functions, even if it is only a single line. This
+can be useful for both the generated API documentation, and through
+interactive help (i.e., the help() command in an interactive Python
+session). If there is a need for this, I am fine going through all of the
+code and documenting everything, or getting a good start on it.

@@ -1,0 +1,19 @@
+Edit the doc-string to add list of other function that are closely related to the query.
+
+Ex. 
+
+```
+>>> prime?
+Docstring:
+    Return the nth prime, with the primes indexed as prime(1) = 2,
+    prime(2) = 3, etc.... The nth prime is approximately n*log(n) and
+    can never be larger than 2**n.
+    
+    Reference: http://primes.utm.edu/glossary/xpage/BertrandsPostulate.html
+```
+
+This is the present doc-string. One needs to add the following line
+
+```
+    See also : isprime, primerange, primepi
+```

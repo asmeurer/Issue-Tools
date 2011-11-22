@@ -1,0 +1,18 @@
+Edit the doc-string to add list of other function that are closely related to the query.
+
+
+This is the list of .py files which contains the functions.
+
+```
+sympy/functions/combinatorial/factorials.py
+sympy/functions/combinatorial/numbers.py
+sympy/functions/elementary/trigonometric.py  
+sympy/functions/elementary/integers.py
+sympy/functions/elementary/exponential.py
+sympy/functions/elementary/piecewise.py
+sympy/functions/elementary/complexes.py
+sympy/functions/elementary/miscellaneous.py
+sympy/functions/elementary/hyperbolic.py
+```
+
+There are around 52 functions which one needs to understand (the input parameters and final result and not the code) to interrelate them.
