@@ -201,7 +201,7 @@ class Task(dict):
         response = conn.getresponse()
 
         logging.debug("Response: %s, %s" % (response.status, response.reason))
-        if response.status<>'200':
+        if response.status<>200:
             logging.warning("Response is not ok: %s, %s" % (response.status, response.reason))
 
         results = response.read()
@@ -251,7 +251,7 @@ class Task(dict):
         response = conn.getresponse()
 
         logging.debug("Response: %s, %s" % (response.status, response.reason))
-        if response.status<>'200':
+        if response.status<>200:
             logging.warning("Response is not ok: %s, %s" % (response.status, response.reason))
 
         results = response.read()
