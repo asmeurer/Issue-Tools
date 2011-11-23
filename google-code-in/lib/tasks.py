@@ -209,8 +209,8 @@ class Task(dict):
 
     def serach_issue_id(self):
         import re
-        re_issue =re.compile("""Please see(\s|&nbsp;)+<a href="http://code.google.com/p/sympy/issues/detail[^=]+=(?P<id1>[\d]+)">[^=]+=(?P<id2>[\d]+)</a>(\s|&nbsp;)+""", re.M)
-        re_issue2 =re.compile("""Please see(\s|&nbsp;)+http://code.google.com/p/sympy/issues/detail[^=]+=(?P<id1>[\d]+)(\s|&nbsp;)+""", re.M)
+        re_issue =re.compile("""Please see(\s|&nbsp;)+<a href="http://code.google.com/p/sympy/issues/detail[^=]+=(?P<id1>[\d]+)">[^=]+=(?P<id2>[\d]+)</a>""", re.M)
+        re_issue2 =re.compile("""Please see(\s|&nbsp;)+http://code.google.com/p/sympy/issues/detail[^=]+=(?P<id1>[\d]+)""", re.M)
         
         content = self.retrieve_task_page()
         m = re_issue.search(content)
