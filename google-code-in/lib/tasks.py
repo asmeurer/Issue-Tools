@@ -2,6 +2,9 @@
 import re
 import logging
 import os.path
+import httplib
+from time import sleep
+
 
 from utilities import UnicodeDictReader, UnicodeDictWriter
 
@@ -14,6 +17,7 @@ class Tasks(object):
         self._fieldnames = []
         self._mentors_data = mentors_data
         self._issues_dir = kwargs.get("issues_dir")
+        self._current_filename = None
 
     def __iter__(self):
         self._counter = 0 
@@ -28,6 +32,7 @@ class Tasks(object):
             raise StopIteration
 
     def load(self, filename):
+        self._current_filename = filename
         self._tasks = []
         with open(filename, 'rb') as f:
             reader = UnicodeDictReader(f)
@@ -43,7 +48,9 @@ class Tasks(object):
             if name not in self._fieldnames:
                 self._fieldnames.append(name)
 
-    def save(self, filename):
+    def save(self, filename=None):
+        if filename==None:
+            filename = self._current_filename
         with open(filename, 'wb') as f:
             writer = UnicodeDictWriter(f, fieldnames=self._fieldnames)
 
@@ -115,6 +122,13 @@ class Tasks(object):
         res = [task for task in self._tasks if task.Difficulty == difficulty]
         return Tasks(res)
 
+    def by_issue_id(self, issue_id):
+        """
+        Return tasks list with pointed category.
+        """
+        res = [task for task in self._tasks if (task.Id == issue_id) and (task['is inserted']=='False')]
+        return Tasks(res)
+
 
 
 class Task(dict):
@@ -174,9 +188,6 @@ class Task(dict):
         """
         Retrieve task page from google
         """
-        import httplib
-        from time import sleep
-
         logging.debug("Load the task page with key: %s" % self.Key)
 
         server = "www.google-melange.com"
@@ -214,4 +225,43 @@ class Task(dict):
         else:
             logging.warning("Issue id is not found for the task #%s" % self.Key)
             return None
+
+    def check_if_comment_is_inserted(self):
+        """
+        If task has issue_id (Id), check issue tracker for comments about the task id.
+        """
+
+        logging.info("Check whether comment for the task #%s (issue %s) is inserted." % (self.Key, self.Id))
+
+        if not self.Key:
+            return None
+        if not self.Id:
+            return None
+
+        server = "code.google.com"
+        path_format = "/p/sympy/issues/detail?id=%s"
+
+        path = path_format % self.Id
+
+        headers = {"Accept":"Accept: text/html, application/xml, application/xhtml+xml"}
+        conn = httplib.HTTPConnection(server)
+        conn.request("GET", path)
+        response = conn.getresponse()
+
+        logging.debug("Response: %s, %s" % (response.status, response.reason))
+        
+        results = response.read()
+        conn.close()
+        #s = """http://www.google-melange.com/gci/task/view/google/gci2011/(?P<id1>[\d]+)"""
+        s = """http://www.google-melange.com/gci/task/view/google/gci2011/%s""" % self.Key
+        re_task = re.compile(s, re.M)
+        m = re_task.search(results)
+        res = False
+        if m:
+            res = True
+
+        
+        logging.info("Checking result: %s" % res)
+        sleep(1)
+        return res
 
