@@ -3,7 +3,7 @@ import re
 import logging
 import os.path
 
-from utilities import UnicodeDictReader
+from utilities import UnicodeDictReader, UnicodeDictWriter
 
 class Tasks(object):
     """
@@ -37,6 +37,43 @@ class Tasks(object):
 
         logging.debug("Task list is loaded from the file `%s`" % filename)
         logging.debug("Columns: `%s`" % self._fieldnames)
+
+    def extend_fieldnames(self, fieldnames):
+        for name in fieldnames:
+            if name not in self._fieldnames:
+                self._fieldnames.append(name)
+
+    def save(self, filename):
+        with open(filename, 'wb') as f:
+            writer = UnicodeDictWriter(f, fieldnames=self._fieldnames)
+
+            titles = {}
+            for t in self._fieldnames:
+                titles[t] = t
+            writer.writerow(titles)
+
+            for task in self:
+                writer.writerow(task)
+
+        logging.debug("Task list was saved to:`%s`" % filename)
+
+    def update(self, new_tasks, unique_id = "Key"):
+        """
+        Join new task list to self, by unique id.
+        """
+        for task in new_tasks:
+            _key = task[unique_id]
+            if not self.exists(_key):
+                logging.info("New task  #%s is appended.", _key)
+
+    def exists(self, key):
+        """
+        Check if task is exists
+        """
+        for task in self._tasks:
+            if task.Key == key:
+                return True
+        return False
 
     @property
     def fieldnames(self):
@@ -132,3 +169,49 @@ class Task(dict):
         Obtain mentors list by a string with Mentor_IDs
         """
         return self._mentors_data.by_cs_linkid_string(self.Mentor_IDs)
+
+    def retrieve_task_page(self):
+        """
+        Retrieve task page from google
+        """
+        import httplib
+        from time import sleep
+
+        logging.debug("Load the task page with key: %s" % self.Key)
+
+        server = "www.google-melange.com"
+        path_format = "/gci/task/view/google/gci2011/%s"
+
+        path = path_format % self.Key
+
+        headers = {"Accept":"Accept: text/html, application/xml, application/xhtml+xml"}
+        conn = httplib.HTTPConnection(server)
+        conn.request("GET", path)
+        response = conn.getresponse()
+
+        logging.debug("Response: %s, %s" % (response.status, response.reason))
+        
+        results = response.read()
+        conn.close()
+        sleep(1)
+        return results
+
+    def serach_issue_id(self):
+        import re
+        re_issue =re.compile("""Please see\s+<a href="http://code.google.com/p/sympy/issues/detail[^=]+=(?P<id1>[\d]+)">[^=]+=(?P<id2>[\d]+)</a>\s+for full information on this task.""", re.M)
+        re_issue2 =re.compile("""Please see\s+http://code.google.com/p/sympy/issues/detail[^=]+=(?P<id1>[\d]+)\s+""", re.M)
+        
+        content = self.retrieve_task_page()
+        m = re_issue.search(content)
+        if m:
+            assert m.group('id2') == m.group('id1')
+        else:
+            m = re_issue2.search(content)
+        if m:
+            _id = unicode(m.group('id1'))
+            logging.info("For task '%s' issue id is found: %s" % (self.Key, _id))
+            return _id
+        else:
+            logging.warning("Issue id is not found for the task #%s" % self.Key)
+            return None
+
