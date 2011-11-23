@@ -140,7 +140,6 @@ def load_config_file():
 
     if os.path.exists(conf_file):
         namespace = {}
-
         with open(conf_file) as f:
             try:
                 exec f.read() in namespace
@@ -168,4 +167,3 @@ def ask_create_dir(path, is_dir=True):
         os.makedirs(path)
         logging.info("Directory '%s' created" % path)
     return True
-    

@@ -17,7 +17,8 @@ from mako.template import Template
 
 from lib.tasks import Tasks
 from lib.mentors import Mentors
-from lib.utilities import ask_create_dir
+from lib.utilities import ask_create_dir, load_config_file
+from lib.issuetracker import SympyIssueTracker
 
 default_task_list_csv = "prepared-data/task-list.cvs"
 
@@ -50,6 +51,10 @@ logging.basicConfig(level=logging.INFO)
 
 
 def main():
+    config = load_config_file()
+    tracker = SympyIssueTracker(config)
+    tracker.login()
+    il = tracker.get_issues()
 
     tasks = Tasks([])
     tasks.load(options.task_list)
@@ -103,8 +108,10 @@ http://www.google-melange.com/gci/task/view/google/gci2011/%s
 
                 # insert comment
                 if options.simulation_off:
-                    pass
-                
+                    a = raw_input("Insert comment? y/[n] >")
+                    if a=="y":
+                        tracker.add_comment(_id, message)
+                        print "Added."
             else:
                 logging.warning("Tasks for issue #%s are not found" % _id)
 
