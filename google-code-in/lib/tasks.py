@@ -201,7 +201,9 @@ class Task(dict):
         response = conn.getresponse()
 
         logging.debug("Response: %s, %s" % (response.status, response.reason))
-        
+        if response.status<>'200':
+            logging.warning("Response is not ok: %s, %s" % (response.status, response.reason))
+
         results = response.read()
         conn.close()
         sleep(1)
@@ -211,7 +213,7 @@ class Task(dict):
         import re
         re_issue =re.compile("""Please see(\s|&nbsp;)+<a href="http://code.google.com/p/sympy/issues/detail[^=]+=(?P<id1>[\d]+)">[^=]+=(?P<id2>[\d]+)</a>""", re.M)
         re_issue2 =re.compile("""Please see(\s|&nbsp;)+http://code.google.com/p/sympy/issues/detail[^=]+=(?P<id1>[\d]+)""", re.M)
-        
+
         content = self.retrieve_task_page()
         m = re_issue.search(content)
         if m:
@@ -249,7 +251,9 @@ class Task(dict):
         response = conn.getresponse()
 
         logging.debug("Response: %s, %s" % (response.status, response.reason))
-        
+        if response.status<>'200':
+            logging.warning("Response is not ok: %s, %s" % (response.status, response.reason))
+
         results = response.read()
         conn.close()
         #s = """http://www.google-melange.com/gci/task/view/google/gci2011/(?P<id1>[\d]+)"""
