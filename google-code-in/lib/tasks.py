@@ -71,6 +71,7 @@ class Tasks(object):
         for task in new_tasks:
             _key = task[unique_id]
             if not self.exists(_key):
+                self._tasks.append(task)
                 logging.info("New task  #%s is appended.", _key)
 
     def exists(self, key):
