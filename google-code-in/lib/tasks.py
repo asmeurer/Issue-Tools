@@ -218,7 +218,11 @@ class Task(dict):
         content = self.retrieve_task_page()
         m = re_issue.search(content)
         if m:
-            assert m.group('id2') == m.group('id1')
+            try:
+                assert m.group('id2') == m.group('id1')
+            except AssertionError:
+                m = None
+                logging.warning("AssertionError: m.group('id2') == m.group('id1') for the task #%s" % self.Key)
         else:
             m = re_issue2.search(content)
         if m:
