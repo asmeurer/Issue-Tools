@@ -11,10 +11,10 @@ from lib.tasks import Tasks
 from lib.mentors import Mentors
 from lib.utilities import ask_create_dir
 
-default_task_list_csv = "source-data/saved_gci-task-list.cvs"
+default_task_list_csv = "source-data/saved_gci-task-list.csv"
 default_mentors = "source-data/mentors.csv"
 default_issues_description_dir = "source-data/issues-manual-edited"
-default_output_file = "prepared-data/task-list.cvs"
+default_output_file = "prepared-data/task-list.csv"
 
 
 

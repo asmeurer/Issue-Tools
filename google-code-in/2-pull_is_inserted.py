@@ -18,7 +18,7 @@ from lib.tasks import Tasks
 from lib.mentors import Mentors
 from lib.utilities import ask_create_dir
 
-default_task_list_csv = "prepared-data/task-list.cvs"
+default_task_list_csv = "prepared-data/task-list.csv"
 
 
 

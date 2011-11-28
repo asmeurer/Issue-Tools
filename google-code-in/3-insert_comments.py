@@ -20,7 +20,7 @@ from lib.mentors import Mentors
 from lib.utilities import ask_create_dir, load_config_file
 from lib.issuetracker import SympyIssueTracker
 
-default_task_list_csv = "prepared-data/task-list.cvs"
+default_task_list_csv = "prepared-data/task-list.csv"
 
 
 
