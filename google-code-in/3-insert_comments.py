@@ -60,7 +60,7 @@ def main():
     tasks.load(options.task_list)
     if "Id" not in tasks.fieldnames:
         print "It seems that column with issues-id 'Id' is not filled."
-        print "Run 'pull-issues-id.py' firstly, then 'pull-is-inserted.py' to check"
+        print "Run '1-pull_issues_id.py' firstly, then '2-pull_is_inserted.py' to check"
         sys.exit(1)
 
     for task in tasks:
