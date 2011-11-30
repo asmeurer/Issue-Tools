@@ -20,7 +20,7 @@ class Tasks(object):
         self._current_filename = None
 
     def __iter__(self):
-        self._counter = 0 
+        self._counter = 0
         return self
 
     def next(self):
@@ -141,7 +141,7 @@ class Task(dict):
         self.__initialised = True
 
     def __getattr__(self, title):
-        if title[0] <> "_":
+        if title[0] != "_":
             title = title.replace("_", " ")
         try:
             return super(Task,self).__getitem__(title)
@@ -157,7 +157,7 @@ class Task(dict):
 
     @property
     def description(self):
-        if self._description <> None:
+        if self._description != None:
             return self._description
         else:
             if self._issues_dir:
@@ -202,7 +202,7 @@ class Task(dict):
         response = conn.getresponse()
 
         logging.debug("Response: %s, %s" % (response.status, response.reason))
-        if response.status<>200:
+        if response.status!=200:
             logging.warning("Response is not ok: %s, %s" % (response.status, response.reason))
 
         results = response.read()
@@ -256,7 +256,7 @@ class Task(dict):
         response = conn.getresponse()
 
         logging.debug("Response: %s, %s" % (response.status, response.reason))
-        if response.status<>200:
+        if response.status!=200:
             logging.warning("Response is not ok: %s, %s" % (response.status, response.reason))
 
         results = response.read()
@@ -269,7 +269,7 @@ class Task(dict):
         if m:
             res = True
 
-        
+
         logging.info("Checking result: %s" % res)
         sleep(1)
         return res

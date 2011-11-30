@@ -17,8 +17,6 @@ default_issues_description_dir = "source-data/issues-manual-edited"
 default_output_file = "prepared-data/task-list.csv"
 
 
-
-
 parser = OptionParser()
 parser.set_usage("%s [options ...] [command]")
 
@@ -29,13 +27,13 @@ parser.add_option("--mentors", type="string", dest="mentors",
     help="Mentor's link table [default: %default]", default=default_mentors)
 
 parser.add_option("-o", "--output", type="string", dest="output_file",
-    help="Resulted filename [default: %default]", default=default_output_file)
+    help="Output filename [default: %default]", default=default_output_file)
 
 parser.add_option("--issues", type="string", dest="issues_dir",
-    help="Directory with manual edited issue's description, updated for markdown [default: %default]", default=default_issues_description_dir)
+    help="Directory with manually edited issue descriptions, updated for markdown [default: %default]", default=default_issues_description_dir)
 
 parser.add_option("--recreate", action="store_true", dest="recreate",
-    default=False, help="Do not update existing file. Recreated it")
+    default=False, help="Do not update the existing file: recreate it")
 
 
 parser.add_option("-v", "--verbose", action="store_true", dest="verbose",
@@ -55,10 +53,10 @@ logging.basicConfig(level=logging.INFO)
 def main():
 
     if options.recreate and os.path.exists(options.output_file):
-        a = raw_input("Are you sure to delete '%s' file? : yes/[no] >" % options.output_file)
-        if a <> "yes":
+        a = raw_input("Are you sure you want to delete '%s' file? : yes/[no] > " % options.output_file)
+        if a != "yes":
             options.recreate = False
-    
+
     if not ask_create_dir(options.output_file, False):
         sys.exit()
 

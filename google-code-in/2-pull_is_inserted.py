@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 """
-This script check issue tracker, whether comments about GCI task are inserted.
+This script checks the issue tracker to see if comments about GCI task
+are inserted.
 
-Script work with source table, check if issue_id is present, and update column
-'is_inserted'
+The script reads the source table, checks if issue_id is present, and
+updates column 'is_inserted'.
 
 """
 
@@ -29,7 +30,7 @@ parser.add_option("--source", type="string", dest="task_list",
     help="Source task list table [default: %default]", default=default_task_list_csv)
 
 parser.add_option("--all", dest="check_all",
-    help="Check issue tracker even when the 'is_inserted' filled [default: %default]", default=False)
+    help="Check issue tracker even when 'is_inserted' is True [default: %default]", default=False)
 
 parser.add_option("-v", "--verbose", action="store_true", dest="verbose",
     default=False)
@@ -50,14 +51,14 @@ def main():
     tasks = Tasks([])
     tasks.load(options.task_list)
     if "Id" not in tasks.fieldnames:
-        print "It seems that column with issues-id 'Id' is not filled."
+        print "It seems that the column with issues-id 'Id' is not filled."
         print "Run '1-pull_issues_id.py' firstly."
         sys.exit(1)
 
     for task in tasks:
         _id = task.Id
         if not _id:
-            logging.warning("The task #%s has not issue_id. Skipped." % task.Key)
+            logging.warning("The task #%s has no issue_id. Skipped." % task.Key)
             continue
 
         val_is_inserted = None
@@ -65,7 +66,7 @@ def main():
             val_is_inserted = task['is inserted']
 
         if ((val_is_inserted=="True") or (val_is_inserted=="False")) and not options.check_all:
-            logging.debug("The information about inserting comment for the task #%s (issue %s) is present already. Skip" % (task.Key, _id))
+            logging.debug("The information about inserting comments for the task #%s (issue %s) is present already. Skip" % (task.Key, _id))
             continue
 
         val_is_inserted = (False, True)[val_is_inserted=="True"]
@@ -73,7 +74,7 @@ def main():
 
         new_is_inserted = task.check_if_comment_is_inserted()
         if new_is_inserted==None:
-            logging.warning("Can't check whether comment is inserted for the task #%s (issue %s)." % (task.Key, _id))
+            logging.warning("Can't check whether the comment is inserted for the task #%s (issue %s)." % (task.Key, _id))
             continue
 
         task['is inserted'] = ("False", "True")[new_is_inserted]

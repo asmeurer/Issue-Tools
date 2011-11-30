@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 """
-This script check source task-list file and insert comments only for the tasks
-which has is_inserted==False.
+This script checks the source task-list file and inserts comments only
+for the tasks which have is_inserted==False.
 
-Script work with source table, check if issue_id is present, and update column
-'is_inserted', after inserting process.
+The script reads the source table, checks if issue_id is present, and
+updates the column 'is_inserted', after inserting the comment.
 
 """
 
@@ -31,7 +31,7 @@ parser.add_option("--source", type="string", dest="task_list",
     help="Source task list table [default: %default]", default=default_task_list_csv)
 
 parser.add_option("--all", dest="check_all",
-    help="Check issue tracker even when the 'is_inserted' filled [default: %default]", default=False)
+    help="Check issue tracker even when 'is_inserted' is True [default: %default]", default=False)
 
 parser.add_option("-v", "--verbose", action="store_true", dest="verbose",
     default=False)
@@ -59,14 +59,14 @@ def main():
     tasks = Tasks([])
     tasks.load(options.task_list)
     if "Id" not in tasks.fieldnames:
-        print "It seems that column with issues-id 'Id' is not filled."
-        print "Run '1-pull_issues_id.py' firstly, then '2-pull_is_inserted.py' to check"
+        print "It seems that the column with issues-id 'Id' is not filled."
+        print "Run '1-pull_issues_id.py' first, then '2-pull_is_inserted.py' to check"
         sys.exit(1)
 
     for task in tasks:
         _id = task.Id
         if not _id:
-            logging.warning("The task #%s has not issue_id. Skipped." % task.Key)
+            logging.warning("The task #%s has no issue_id. Skipped." % task.Key)
             continue
 
         val_is_inserted = None
@@ -74,7 +74,7 @@ def main():
             val_is_inserted = task['is inserted']
 
         if (val_is_inserted=="True") and not options.check_all:
-            logging.debug("The information is present that the comment for the task #%s (issue %s) is inserted already. Skip" % (task.Key, _id))
+            logging.debug("The comment for the task #%s (issue %s) has appearantly been inserted already. Skip" % (task.Key, _id))
             continue
 
         if val_is_inserted == None:
@@ -108,7 +108,7 @@ http://www.google-melange.com/gci/task/view/google/gci2011/%s
 
                 # insert comment
                 if options.simulation_off:
-                    a = raw_input("Insert comment? y/[n] >")
+                    a = raw_input("Insert comment? y/[n] > ")
                     if a=="y":
                         tracker.add_comment(_id, message)
                         print "Added."
