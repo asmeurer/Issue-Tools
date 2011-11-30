@@ -1,0 +1,11 @@
+This is related to <a title="more efficient core"  href="/p/sympy/issues/detail?id=1908">issue 1908</a>.  When I met with Ondrej last summer, we worked on a core where 
+objects knew how to combine themselves with respect to Mul and Add.  See the handler branch at 
+<a href="http://github.com/certik/sympyx/" rel="nofollow">http://github.com/certik/sympyx/</a>.  The idea originally stemmed from <a title="Arbitrary constant type"  href="/p/sympy/issues/detail?id=1336">issue 1336</a>, but we soon 
+discovered that it also simplifies the logic for things like O() (the order function), and oo, which 
+combine abnormally with respect to Mul and Add.  This could also be useful for <a title="Improvements for physical units"  href="/p/sympy/issues/detail?id=1940">issue 1940</a>, so that 
+the units could tell Mul that they need to stay together without Mul explicitly having to know about 
+units.  Right now, Mul.flatten is cluttered with code for handling all these things, and the only way 
+to handle additional classes is to either completely separate them from Basic (as with Poly), or to 
+add more special case code in Mul.flatten.  
+
+Anyway, if we ever rework the core as suggested in <a title="more efficient core"  href="/p/sympy/issues/detail?id=1908">issue 1908</a> or elsewhere, we should also look into doing this too.

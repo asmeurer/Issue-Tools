@@ -1,0 +1,32 @@
+After pickling and unpickling `pi`, a simple `cos(pi)` no longer nicely simplifies to -1 on its own (it does if you nsimplify it)
+
+Code:
+
+```
+$ cat test.py 
+from sympy import *
+from pickle import *
+
+mypkl = open('test.pkl', 'wb')
+dump(pi, mypkl)
+mypkl.close()
+
+mypkl = open('test.pkl', 'rb')
+picklepi = load(mypkl)
+mypkl.close()
+
+print cos(pi)
+print cos(picklepi)
+print nsimplify(cos(picklepi))
+
+Output:
+$ python test.py 
+-1
+cos(pi)
+-1
+
+Expected output:
+-1
+-1
+-1
+```

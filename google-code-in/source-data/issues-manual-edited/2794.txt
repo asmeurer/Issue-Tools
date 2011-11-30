@@ -1,0 +1,7 @@
+See Table II of the paper &quot;Symbolic Integration: The Stormy Decade&quot; by Joel Moses.  Some of these are not implemented yet, in particular, the last three.  
+
+I was able to download this paper for free from Google Scholar.  If you cannot access it and are interested in fixing this issue, contact me and I will send it to you.
+
+See also [issue 2793](http://code.google.com/p/sympy/issues/detail?id=2793).
+
+Each solver should be a separate Code-In task.

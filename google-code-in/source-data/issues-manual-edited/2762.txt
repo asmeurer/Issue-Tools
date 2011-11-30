@@ -1,0 +1,3 @@
+This is related to <a title="Exact, algebraic, and integer_power substitution"  href="/p/sympy/issues/detail?id=2026">issue 2026</a> and this thread on the [mailing list](http://groups.google.com/group/sympy/browse_thread/thread/4a19d0f39f51fda6).  The subs mechanism should be refactored so that it is more flexible.  Also, I believe it should be using the same thing internally as the pattern matching.  
+
+The (Code-In) task here is to study this problem and discuss optimal ways to solve it.  You may also try implementing this (if we agree upon a good solution), perhaps as a separate task.

@@ -1,0 +1,1 @@
+Our webpage can be translated to other languages. Note that this is connected with [issue #2764](http://code.google.com/p/sympy/issues/detail?id=2764), about improving our webpage: if someone is working on that, there's likely no point in translating the page as it'll change.

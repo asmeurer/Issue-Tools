@@ -1,0 +1,17 @@
+Example:
+
+```
+$ sudo apt-get install pyflakes
+$ pyflakes sympy/integrals/
+sympy/integrals/integrals.py:10: 'limit' imported but unused
+sympy/integrals/integrals.py:13: 'DiracDelta' imported but unused
+sympy/integrals/integrals.py:13: 'Heaviside' imported but unused
+```
+it finds (among other things) that the Heaviside is imported but never
+used, so it should be removed.
+
+There is also pychecker, which shows a lot of things similar to this (I can't get pyflakes to work, so I can't say if it 
+does more or not).  You can just install and run pychecker sympy --limit 1000 to see them all (it takes a few 
+minutes to run).
+
+Note that there are lots of warnings coming from polys/densepolys.py, polys/densetools.py and polys/sparsepolys.py, but these modules are known not to work, cf. issue 2371.

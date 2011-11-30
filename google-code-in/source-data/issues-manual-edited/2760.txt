@@ -1,0 +1,22 @@
+Read this for more information https://github.com/sympy/sympy/pull/674
+
+```py
+latex(x**2, symbol_names={x:'x_i'})
+```
+
+
+works fine, but when you try something as
+
+```py
+latex(~x, symbol_names={x:'x_i'})
+```
+
+it doesn't. Besides, every time you need latex to use x's symbol_name, you need to pass the symbol_names dictionary.
+
+Sage has some nice functionality:
+
+```py
+var('sui', latex_name="s_{u,i}")
+```
+
+and you don't have to use a special dictionary everytime you need to typeset the symbol.

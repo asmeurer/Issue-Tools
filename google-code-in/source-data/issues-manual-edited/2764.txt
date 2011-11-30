@@ -1,0 +1,1 @@
+Our webpage at http://sympy.org/ could probably be made nicer, like with some nice CSS or html5.  The code is at https://github.com/sympy/sympy.github.com   Also, it maybe could use better examples/explanation of what SymPy is.

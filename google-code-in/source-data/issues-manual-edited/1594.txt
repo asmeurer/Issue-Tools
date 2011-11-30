@@ -1,0 +1,1 @@
+Currently it only shuffles the test files, not the test functions.

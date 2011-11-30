@@ -1,0 +1,5 @@
+Just an idea: implement the "square root denesting" ideas of
+<a href="http://www.almaden.ibm.com/cs/people/fagin/symb85.pdf" rel="nofollow">http://www.almaden.ibm.com/cs/people/fagin/symb85.pdf</a>
+doesn't look to complicated.
+
+

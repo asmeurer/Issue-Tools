@@ -1,0 +1,13 @@
+At http://docs.python.org/reference/datamodel.html, it lists all the `__methods__` that Python works with (like `__int__`, `__contains__`, etc.).  We should go through all of these and make sure they are all defined on `Basic`, `Expr`, or whatever relevant subclass, so that we don't have simple bugs like
+
+```py
+>>> long(Integer(3))
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+/Users/aaronmeurer/Documents/python/sympy/sympy/<ipython-input-72-5fff10d216fd> in <module>()
+----> 1 long(Integer(3))
+
+TypeError: long() argument must be a string or a number, not 'Integer'
+```
+
+Regarding where they should be defined, stuff that makes sense for any object should go on Basic, stuff that makes sense only on mathematical objects (like `__add__` for example) should go on Expr, and stuff that makes sense only for numbers (like `__int__`) should go in `Number`.

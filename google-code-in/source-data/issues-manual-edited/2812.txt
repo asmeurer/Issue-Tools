@@ -1,0 +1,1 @@
+This builds on [issue 1594](http://code.google.com/p/sympy/issues/detail?id=1594): once we have the shuffling, we should fix all the failures caused by it. Marking this as a hard task for Code-In, per Aaron's comment on the other issue.

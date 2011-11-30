@@ -1,0 +1,27 @@
+It seems this piece of code is never (?) executed in sympy since
+exp(3*log(x)) canonize to x**3.
+
+```
+--- a/sympy/functions/elementary/exponential.py
+@@ -13,7 +13,7 @@ class exp(Function):
+             raise ArgumentIndexError(self, argindex)
+
+     def inverse(self, argindex=3D1):
+-        return S.Log
++        return log
+
+     @classmethod
+     def _eval_apply_subs(self, *args):
+@@ -124,7 +124,7 @@ class exp(Function):
+         arg =3D self.args[0]
+         o =3D old
+         if isinstance(old, Basic.Pow): # handle (exp(3*log(x))).subs(x*=
+*2, z) -&gt; z**(3/2)
+-            old =3D exp(old.exp * S.Log(old.base))
++            old =3D exp(old.exp * log(old.base))
+```
+
+On the other hand when autoevaluation would be turned off exp(3*log(x))
+will be just that -- so there should be a test which constructs
+unevaluated exp(3*log(x), evaluate=False) and calls subs.
+

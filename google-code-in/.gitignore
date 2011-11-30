@@ -1,0 +1,4 @@
+source-data/saved_gci-task-list.csv
+prepared-data/task-list.csv
+*.pyc
+*.bak

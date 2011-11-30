@@ -1,0 +1,1 @@
+So my friend pointed out to me that WolphramAlpha lets you enter any LaTeX formula, and it will parse it and evaluate it.  I think we should have a parser that lets us do the same thing. In his case, he takes notes in LaTeX and does all of his homework in it, and he was able to just paste an expression from his homework into WolphramAlpha and it did if for him.

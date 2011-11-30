@@ -1,0 +1,11 @@
+I think there is a consensus about the requirements for inclusion of a (nontrivial) patch in sympy:
+
+1. All tests have to pass. (Include new tests for new features.)
+2. The patch has to be positively reviewed by someone else. (If there a objections, a consensus has to be reached.)
+3. Wait at least 24 hours before pushing it in.
+
+
+I think it should be easily accessible from the website [1](http://sympy.org/development.html), probably from the README too. It should be clear to newcomers that not only contribution is very welcome, but also reviewing patches. (The latter currently lacks somewhat imho.) People new to sympy should not be afraid to review patches.
+
+Maybe there should even be a short **how-to about reviewing patches**.
+

@@ -1,0 +1,44 @@
+This is something that's been bothering me for a while.  Piecewise has the following syntax (I quote the docstring):
+
+```
+Usage
+=====
+  Piecewise( (expr,cond), (expr,cond), ... )
+    - Each argument is a 2-tuple defining a expression and condition
+    - The conds are evaluated in turn returning the first that is True.
+      If any of the evaluated conds are not determined explicitly False,
+      e.g. x < 1, the function is returned in symbolic form.
+    - If the function is evaluated at a place where all conditions are False,
+      a ValueError exception will be raised.
+    - Pairs where the cond is explicitly False, will be removed.
+
+Examples
+========
+  >>> from sympy import Piecewise, log
+  >>> from sympy.abc import x
+  >>> f = x**2
+  >>> g = log(x)
+  >>> p = Piecewise( (0, x<-1), (f, x<=1), (g, True))
+  >>> p.subs(x,1)
+  1
+  >>> p.subs(x,5)
+  log(5)
+```
+
+The problem is the use of (g, True) for the "otherwise" condition.  The problem is that if a conditional reduces to True, then this will be interpreted as an "otherwise" condition rather than returning it.  
+
+
+    >>> Piecewise((f(x), x < 0), (x, 1 > 0))
+    ⎧f(x)  for x < 0
+    ⎨               
+    ⎩ x    otherwise
+
+
+
+This is also inconsistant in that it treats it correctly if only one condition is given:
+
+```py
+>>> Piecewise((x, 1 > 0))
+x
+
+```

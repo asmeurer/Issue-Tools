@@ -1,0 +1,1 @@
+The list of things that SymPy can do on the homepage is not up to date, because we can actually do a lot more things than that.  This should be updated.

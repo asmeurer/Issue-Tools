@@ -1,0 +1,21 @@
+
+```py
+>>> minpoly(exp(I*pi/8))
+ERROR: An unexpected error occurred while tokenizing input
+The following traceback may be corrupted or invalid
+The error message is: ('EOF in multi-line statement', (16, 0))
+---------------------------------------------------------------------------
+
+/Users/aaronmeurer/Documents/python/sympy/sympy/sympy/polys/numberfields.pyc in bottom_up_scan(ex)
+    117                 return symbols[ex.root]
+    118 
+--> 119         raise NotAlgebraic("%s doesn't seem to be an algebraic number" % ex)
+    120 
+    121     polys = args.get('polys', False)
+
+NotAlgebraic: exp(I*pi/8) doesn't seem to be an algebraic number
+```
+
+But this is a root of `x**16 - 1`.  I don't know how minpoly works internally if this can be done in a general fashion for exponentials nested inside other expressions (like e.g., `sqrt(1 + exp(I*pi/8)))`.
+
+Marking as Code-In difficulty hard because this is a nontrivial algorithm, especially for a high school student.

@@ -1,0 +1,1 @@
+Examples/short tutorials should show how to use SymPy to solve illustrative problems in high school mathematics/physics. Notebooks must contain code split into logical blocks, text cells with problem description and references to other materials, books, videos, etc.

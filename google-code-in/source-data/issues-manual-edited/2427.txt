@@ -1,0 +1,1 @@
+If any code wants to know if there are variables that are free like `x` but not `y` in `Integral(y, (y, 1, x))` then it should use expr.free_symbols, not `.atoms(Symbol)` (since that would have given x and y for the example given). The code should be checked for instances of `.atoms(Symbol)` to see what the author intended and corrected if necessary.

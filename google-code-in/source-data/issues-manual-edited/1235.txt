@@ -1,0 +1,15 @@
+I've downloaded the Windows installer, and tries to run the program - but 
+I get an error message: "No Python information found in the registry". But 
+I have Python installed.
+
+This is what I get when running the Python command in the command line:
+
+```C:\Users\Fredrik\Documents\programme\discalc>PYTHON
+Python 2.5.1 (r251:54863, Apr 18 2007, 08:51:08) [MSC v.1310 32 bit 
+(Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+
+The problem is that we need someone with a 64-bit Windows machine to volunteer to do it (see #16).
+

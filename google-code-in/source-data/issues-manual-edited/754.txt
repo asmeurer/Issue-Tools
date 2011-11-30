@@ -1,0 +1,21 @@
+Here is a nice integral that SymPy is able to compute:
+
+```
+>>> from sympy import *
+>>> var('y')
+y
+>>> a = integrate((16*y-16)/(y**4-2*y**3+4*y-4), (y, 0, 1))
+>>> a = simplify(a)
+>>> pprint(a)
+                                              ___
+-2*log(2) + 2*pi + 2*log(1 + I) + 2*log(1 + \/ 2 ) + 2*log(1 - I) + 2*log(1 -
+
+  ___
+\/ 2 ) - 2*pi*I - 2*I*log(1 - I) + 2*I*log(1 + I)
+
+```
+
+Simplifying the answer by hand is straightforward (add up the real and
+imaginary parts), but unfortunately, SymPy is unable to do this. (It also
+fails to produce a numerical value: a.evalf() -> ValueError.) It seems that
+currently re and as_real_imag don't know anything about logarithms.

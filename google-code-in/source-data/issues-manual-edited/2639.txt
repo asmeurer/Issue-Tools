@@ -1,0 +1,23 @@
+Unlike other unevaluated operators, Product() is not always unevaluated.  Attempted evaluation should be the job of product().  This is how Sum/summation works:
+
+```py
+>>> Product(n, (n, 1, 2))
+2
+>>> Sum(n, (n, 1, 2))
+```
+
+```
+  2    
+ __    
+ \ `   
+  )   n
+ /_,   
+n = 1  
+```
+```
+>>> product(n, (n, 1, 2))
+2
+
+>>> summation(n, (n, 1, 2))
+3
+```

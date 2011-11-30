@@ -1,0 +1,3 @@
+There are some methods that do have docstrings, but are not shown in the documentation (docs.sympy.org).
+
+For example, method norm in matrices.matrices.py has a docstring, but is not shown in http://docs.sympy.org/dev/modules/matrices.html. I thought that the bad formatting (there is no blank line after the first line of docstring) of the docstring might be the reason for this, but there are other methods with baddly formatted docstrings, that are properly shown in the documentation (e.g. method `is_symmetric` for `matrices.matrices.py`).

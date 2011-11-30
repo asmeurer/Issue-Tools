@@ -1,0 +1,18 @@
+In Dev version
+
+```
+>>> import sympy
+>>> x = sympy.Symbol('x')
+>>> i = sympy.integrate(sympy.Abs(x), (x, -1, 1))
+>>> i.n()
+
+
+/env/src/sympy/sympy/mpmath/libmp/libmpf.pyc in mpf_abs(s, prec, rnd)
+    653     precision. The prec argument can be omitted to generate an
+    654     exact result.&quot;&quot;&quot;
+--> 655     sign, man, exp, bc = s
+    656     if (not man) and exp:
+    657         if s == fninf:
+
+TypeError: 'NoneType' object is not iterable
+```

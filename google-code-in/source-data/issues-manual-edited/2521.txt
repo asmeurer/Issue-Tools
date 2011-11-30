@@ -1,0 +1,11 @@
+I tried the new live.sympy.org on my 1st gen iPod touch (iOS 3).  There are a couple of things that make the usage difficult:
+
+- Pressing both "Return" and "Shift-Return" on the keyboard just creates a newline in the input, regardless of whether the "Enter/Shift-Enter" popup is set to.  You can still enter the expression by pressing the "Evaluate" button, but it would be nice if the keyboard worked.
+
+- There's no way to access the history.  There is no "Control" key on an iPod touch.
+
+- You cannot scroll within a frame in mobile Safari, so you can't access the history of the session beyond a few inputs.
+
+- This may be an inherent problem with the fonts in iOS, but the unicode output of the result of `dsolve(f(x).diff(x, x) + 2*f(x).diff(x) + f(x) - exp(x) + sin(x), f(x))` is a little off.  I'm happy to report that the LaTeX output works great, though.
+
+- There are a few minor issues with the size of things, which would be fixed the best if there were a mobile version of the site.  But this is a lower priority.  If the above items can be fixed, the site as it is will work just fine in a mobile environment.

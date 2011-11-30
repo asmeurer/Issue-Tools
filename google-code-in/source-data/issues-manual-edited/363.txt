@@ -1,0 +1,22 @@
+I think a method that does the opposite of reduce(operator, [x,y,...])
+would be useful. Something like this:
+
+```py
+>>> (x+y+z).split('+')
+(x, y+z)
+>>> (x+y+z).split('+', flatten=True)
+(x, y, z)
+```
+
+Various keyword arguments could be added for whether to split rational
+numbers, etc. With such options, split() could replace several existing
+methods like as_coefficient, as_independent, as_base_exp, as_numer_denom,
+etc. It is better to only have to remember a single method.
+
+Using an operator symbol like '+' as argument instead of a class is my
+preference as it would be more readable and more versatile ('/' can be used
+even though we have no Div class).
+
+A method like this would be especially useful if Add and Mul are changed as
+discussed in [issue 362: Possible speed improvements to core](http://code.google.com/p/sympy/issues/detail?id=362), as its interface would be independent of the
+underlying representation.

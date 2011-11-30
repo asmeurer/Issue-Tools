@@ -1,0 +1,1 @@
+If you "git grep '# *assert'", you'll see a bunch of tests where the test line is commented out.  These should be changed to be XFAIL tests, so that we can see if they start passing.  Also, they should be double checked to see if they really would start passing (e.g., they don't have syntax errors).

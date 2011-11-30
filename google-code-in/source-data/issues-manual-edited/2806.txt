@@ -1,0 +1,3 @@
+We have a page of tips that we are compiling at [[tips]].  This should be really fleshed out, so that we have enough tips to do something interesting with.
+
+For Code-In, we can create multiple tasks.  Each task (easy) can be to create say ten tips.

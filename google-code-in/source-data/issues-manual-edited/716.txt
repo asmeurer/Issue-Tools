@@ -1,0 +1,12 @@
+
+```py
+In [1]: e = Ellipse(Point(0,0), 3, 2)
+
+In [2]: t = e.tangent_line(e.random_point())
+
+In [3]: e.is_tangent(t)
+Out[3]: False
+```
+
+Obviously [2] and [3] are in contradiction. By plotting the result, [2] is
+most probably right, so [3] is wrong.

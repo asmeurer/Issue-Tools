@@ -1,0 +1,11 @@
+
+    >>> latex(1/cos(x))
+    \operatorname{cos}^{-1}\left(x\right)
+
+    >>> pprint(1/cos(x))
+      1   
+    ──────
+    cos(x)
+
+
+should output `\frac{1}{\operator ...}`

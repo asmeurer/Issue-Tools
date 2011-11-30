@@ -1,0 +1,1 @@
+The [tutorial](http://docs.sympy.org/0.7.1/tutorial.html) should be translated into various languages, e.g., Czech, Polish, French, German, etc.

@@ -1,0 +1,14 @@
+Currently when we issue:
+
+```
+$ cd doc
+$ make html
+```
+
+we get a lot of errors/warnings related to improper syntax in documentation and docstrings:
+
+```
+sympy/doc/src/aboutus.txt:: (WARNING/2) Duplicate explicit target name: "more info".
+sympy/sympy/core/basic.py:docstring of sympy.core.basic.Basic.atoms:13: (ERROR/3) Inconsistent literal block quoting.
+...
+```

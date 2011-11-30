@@ -1,0 +1,3 @@
+Most distributions have old versions of SymPy packaged (or none at all, eg. openSUSE). These should be updated to the latest version of SymPy (0.7.1 as of now). Ideally, the scripts used to generate these packages should also be saved and uploaded somewhere, so it will be easier to update them to newer versions. I'm marking this for Code-In, but consider that each major distro could be a separate task.
+
+This most likely means deleting the bundled mpmath/ and making SymPy play nice with the distro-provided version.

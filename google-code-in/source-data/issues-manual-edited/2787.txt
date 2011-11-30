@@ -1,0 +1,3 @@
+The sticker should contain SymPy's logo [1], project name and description. Alternative version may skip description. Sticker must be in SVG format.
+
+[1] http://code.google.com/p/sympy/source/browse/#svn%2Fmaterials%2Flogo
