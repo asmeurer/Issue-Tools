@@ -113,7 +113,9 @@ while numDone < len(issues_list):
             if threads[i].isAlive() == False:
                 numDone += len(threads[i].list)
                 for issue in threads[i].list:
-                    comments = len(issue.comments.entry)
+                    comments = 0
+                    if issue.comments != None:
+                        comments = len(issue.comments.entry)
                     for j in range(0, len(comments_categories)):
                         if (comments < comments_bounds[j]):
                             comments_values.append(comments_categories[j])
