@@ -119,7 +119,7 @@ while numDone < len(issues_list):
                             comments_values.append(comments_categories[j])
                             break
                 if len(threads[i].list) > 0:
-                    print "\r{0} issues of {1} processed".format(numDone, len(issues_list))
+                    print "{0} issues of {1} processed".format(numDone, len(issues_list))
                 threads[i] = None
     for i in range(0, numThreads):
         if threads[i] == None:
@@ -143,12 +143,12 @@ print "Percent by comments:"
 draw_percent_graphs(comments_categories, comments_values)
 print "Ranked by stars:"
 issues_list.sort(key=lambda Issue: (Issue.stars), reverse=True)
-for i in range(0, 10):
+for i in range(0, 25):
     print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments)".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry))
 print
 print "Ranked by comments:"
 issues_list.sort(key=lambda Issue: len(Issue.comments.entry), reverse=True)
-for i in range(0, 10):
+for i in range(0, 25):
     print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments)".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry))
 for tag in other_tags:
     other_tags_list.append(Tag(tag, other_tags_all.count(tag)))
