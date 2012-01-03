@@ -145,6 +145,7 @@ print "Ranked by stars:"
 issues_list.sort(key=lambda Issue: (Issue.stars), reverse=True)
 for i in range(0, 10):
     print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments)".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry))
+print
 print "Ranked by comments:"
 issues_list.sort(key=lambda Issue: len(Issue.comments.entry), reverse=True)
 for i in range(0, 10):
