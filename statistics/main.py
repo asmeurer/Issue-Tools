@@ -1,13 +1,12 @@
 #!/usr/bin/env python
-from __future__ import division
+from math import floor
+from threading import Thread
+import __future__
 import re
-from datetime import *
-from math import *
-from operator import *
-from string import *
-from threading import *
+import datetime
+import operator
+import string
 import time
-import sys
 import gdata.projecthosting.client
 import gdata.projecthosting.data
 import gdata.client
@@ -114,8 +113,8 @@ while numDone < len(issues_list):
                 numDone += len(threads[i].list)
                 for issue in threads[i].list:
                     comments = 0
-                    if issue.comments != None:
-                        comments = len(issue.comments.entry)
+                if issue.comments != None:
+                    comments = len(issue.comments.entry)
                     for j in range(0, len(comments_categories)):
                         if (comments < comments_bounds[j]):
                             comments_values.append(comments_categories[j])
