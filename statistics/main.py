@@ -155,7 +155,7 @@ for tag in other_tags:
 print
 print "Top tags:"
 other_tags_list.sort(key=lambda Tag: (Tag.count), reverse=True)
-for i in range(0,10):
+for i in range(0,25):
     print "{index:>2d}. {title} ({count:d} references)".format(index=(i + 1), title=other_tags_list[i].tag, count=other_tags_list[i].count)
 print
 table_string = "{:<15s}{:>10d}{:>10d}"
