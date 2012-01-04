@@ -1,12 +1,9 @@
 #!/usr/bin/env python
-from math import floor
+from __future__ import division
 from threading import Thread
-import __future__
+from math import floor
+from time import sleep
 import re
-import datetime
-import operator
-import string
-import time
 import gdata.projecthosting.client
 import gdata.projecthosting.data
 import gdata.client
@@ -18,7 +15,7 @@ PROJECTNAME = "sympy"
 maxIssues = 1000000
 iter = 1000
 numThreads = 16
-issuesPerThread = 20
+issuesPerThread = 25
 
 def draw_percent_graphs(titles, data, length=57, graph_fill="#"):
     for tag in titles:
@@ -31,10 +28,11 @@ def draw_percent_graphs(titles, data, length=57, graph_fill="#"):
         print "{tag:<15}[{bars:<57}]{percent: >5}%".format(tag=tag, bars=bars, percent=percent)
     print
 class Issue:
-    def __init__(self, id, title, stars, comments=None):
+    def __init__(self, id, title, stars, status, comments=None):
         self.id = id
         self.title = title
         self.stars = stars
+        self.status = status
         self.comments = comments
 class Tag:
     def __init__(self, tag, count):
@@ -77,7 +75,7 @@ for i in range(1, maxIssues, iter):
         issue_title = current_issue.title.text
         issue_stars_location = re.search("[0-9]+", current_issue.stars.text)
         issue_stars = int(current_issue.stars.text[issue_stars_location.start():issue_stars_location.end()])
-        issues_list.append(Issue(issue_id, issue_title, issue_stars))
+        issues_list.append(Issue(issue_id, issue_title, issue_stars, current_issue.state.text))
         if current_issue.state.text == "open":
             num_open += 1
             open_issues.append(issues_list[len(issues_list) - 1].id)
@@ -113,12 +111,12 @@ while numDone < len(issues_list):
                 numDone += len(threads[i].list)
                 for issue in threads[i].list:
                     comments = 0
-                if issue.comments != None:
-                    comments = len(issue.comments.entry)
-                    for j in range(0, len(comments_categories)):
-                        if (comments < comments_bounds[j]):
-                            comments_values.append(comments_categories[j])
-                            break
+                    if issue.comments != None:
+                        comments = len(issue.comments.entry)
+                        for j in range(0, len(comments_categories)):
+                            if (comments < comments_bounds[j]):
+                                comments_values.append(comments_categories[j])
+                                break
                 if len(threads[i].list) > 0:
                     print "{0} issues of {1} processed".format(numDone, len(issues_list))
                 threads[i] = None
@@ -130,7 +128,7 @@ while numDone < len(issues_list):
                 curIssue += 1
             threads[i] = CommentGetter(curList, i)
             threads[i].start()
-    time.sleep(10) #Frees up processer for the CommentGetter threads
+    sleep(10) #Frees up processer for the CommentGetter threads
 print
 print "Percent by priority-open:"
 draw_percent_graphs(priority_tags, priority_tags_all_open)
@@ -145,12 +143,12 @@ draw_percent_graphs(comments_categories, comments_values)
 print "Ranked by stars:"
 issues_list.sort(key=lambda Issue: (Issue.stars), reverse=True)
 for i in range(0, 25):
-    print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments)".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry))
+    print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments) (status: {status})".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry), status=issues_list[i].status)
 print
 print "Ranked by comments:"
 issues_list.sort(key=lambda Issue: len(Issue.comments.entry), reverse=True)
 for i in range(0, 25):
-    print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments)".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry))
+    print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments) (status: {status})".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry), status=issues_list[i].status)
 for tag in other_tags:
     other_tags_list.append(Tag(tag, other_tags_all.count(tag)))
 print
