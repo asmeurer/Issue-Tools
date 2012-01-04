@@ -55,9 +55,9 @@ class CommentGetter(Thread):
             issue.comments = gdata_client.get_comments(PROJECTNAME, issue.id, query=cquery)
 
 parser = ArgumentParser(description=helpText)
-parser.add_argument("-f", "--filter", action="store", default="all", choices=("all", "open", "closed"), help="Specifies a state filter for issue processing")
-parser.add_argument("-s", "--sortby", action="store", default="stars", choices=("stars", "comments", "id"), help="Specifies a sorting method for issue processing")
-parser.add_argument("-p", "--projectname", action="store", default="sympy", help="Google Code Project name")
+parser.add_argument("-f", "--filter", action="store", default="all", choices=("all", "open", "closed"), help="Specifies a state filter for issue processing (default=%(default)s)")
+parser.add_argument("-s", "--sortby", action="store", default="stars", choices=("stars", "comments", "id"), help="Specifies a sorting method for issue processing (default=%(default)s)")
+parser.add_argument("-p", "--projectname", action="store", default="sympy", help="Google Code project name (default=%(default)s)")
 options = parser.parse_args()
 PROJECTNAME = options.projectname
 gdata_client = gdata.projecthosting.client.ProjectHostingClient()
