@@ -143,12 +143,12 @@ draw_percent_graphs(comments_categories, comments_values)
 print "Ranked by stars:"
 issues_list.sort(key=lambda Issue: (Issue.stars), reverse=True)
 for i in range(0, 25):
-    print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments) (status: {status})".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry), status=issues_list[i].status)
+    print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments) (id: {id}) (status: {status})".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry), id=issues_list[i].id, status=issues_list[i].status)
 print
 print "Ranked by comments:"
 issues_list.sort(key=lambda Issue: len(Issue.comments.entry), reverse=True)
 for i in range(0, 25):
-    print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments) (status: {status})".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry), status=issues_list[i].status)
+    print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments) (id: {id}) (status: {status})".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry), id=issues_list[i].id, status=issues_list[i].status)
 for tag in other_tags:
     other_tags_list.append(Tag(tag, other_tags_all.count(tag)))
 print
