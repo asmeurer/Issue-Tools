@@ -130,7 +130,7 @@ while numDone < len(issues_list):
                 curIssue += 1
             threads[i] = CommentGetter(curList, i)
             threads[i].start()
-    time.sleep(10)
+    time.sleep(10) #Frees up processer for the CommentGetter threads
 print
 print "Percent by priority-open:"
 draw_percent_graphs(priority_tags, priority_tags_all_open)
