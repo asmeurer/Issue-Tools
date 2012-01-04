@@ -18,7 +18,7 @@ PROJECTNAME = "sympy"
 maxIssues = 1000000
 iter = 1000
 numThreads = 16
-issuesPerThread = 50
+issuesPerThread = 20
 
 def draw_percent_graphs(titles, data, length=57, graph_fill="#"):
     for tag in titles:
@@ -130,7 +130,7 @@ while numDone < len(issues_list):
                 curIssue += 1
             threads[i] = CommentGetter(curList, i)
             threads[i].start()
-    time.sleep(5)
+    time.sleep(10)
 print
 print "Percent by priority-open:"
 draw_percent_graphs(priority_tags, priority_tags_all_open)
