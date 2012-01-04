@@ -170,38 +170,4 @@ for i in range(0, len(issues_list)):
     issue = issues_list[i]
     outissues.write("{index:<6}{issueid:<6}{name:<50.49s}{stars:<6}{comments:<9}{status:<7}\n".format(index=i, issueid=issue.id, name=issue.title.encode("ascii", "ignore"), stars=issue.stars, comments=len(issue.comments.entry), status=issue.status))
 outissues.close()
-'''
-print "Issue Tracker data for project " + PROJECTNAME
-print
-print "Percent by priority-open:"
-draw_percent_graphs(priority_tags, priority_tags_all_open)
-print "Percent by priority-closed:"
-draw_percent_graphs(priority_tags, priority_tags_all_closed)
-print "Percent by type:"
-draw_percent_graphs(type_tags, type_tags_all)
-print "Percent by status:"
-draw_percent_graphs(status_tags, status_tags_all)
-print "Percent by comments:"
-draw_percent_graphs(comments_categories, comments_values)
-print "Ranked by stars:"
-issues_list.sort(key=lambda Issue: (Issue.stars), reverse=True)
-for i in range(0, 25):
-    print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments) (id: {id}) (status: {status})".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry), id=issues_list[i].id, status=issues_list[i].status)
-print
-print "Ranked by comments:"
-issues_list.sort(key=lambda Issue: len(Issue.comments.entry), reverse=True)
-for i in range(0, 25):
-    print "{index:>2d}. {title} ({stars:d} stars) ({comments:d} comments) (id: {id}) (status: {status})".format(index=(i + 1), title=issues_list[i].title, stars=issues_list[i].stars, comments=len(issues_list[i].comments.entry), id=issues_list[i].id, status=issues_list[i].status)
-for tag in other_tags:
-    other_tags_list.append(Tag(tag, other_tags_all.count(tag)))
-print
-print "Top tags:"
-other_tags_list.sort(key=lambda Tag: (Tag.count), reverse=True)
-for i in range(0,25):
-    print "{index:>2d}. {title} ({count:d} references)".format(index=(i + 1), title=other_tags_list[i].tag, count=other_tags_list[i].count)
-print
-table_string = "{:<15s}{:>10d}{:>10d}"
-print "{:<15s}{:>10}{:>10}".format("", "Open:", "Closed:")
-print table_string.format("Count:", num_open, len(issues_list) - num_open)
-'''
 print "Done"
