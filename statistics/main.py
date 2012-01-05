@@ -19,7 +19,7 @@ maxIssues = 1000000
 iter = 1000
 numThreads = 20
 issuesPerThread = 50
-outpath = os.path.dirname(os.path.abspath(__file__)) + "/out"
+outpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out")
 
 def percent_graphs(label, titles, data, length=57, graph_fill="#"):
     s = label + "\n"
@@ -144,13 +144,13 @@ while numDone < len(issues_list):
 print "Processing data"
 if not os.path.exists(outpath):
   os.makedirs(outpath)
-outsummary = open(outpath + "/summary.txt", "w")
+outsummary = open(os.path.join(outpath, "summary.txt"), "w")
 outsummary.write("Google Code Issue Tracker: Project {name}\n".format(name=PROJECTNAME))
 outsummary.write("Filter: {filter}\n".format(filter=options.filter))
 outsummary.write("Sort method: {method}\n".format(method=options.sortby))
 outsummary.write("Issues processed: {num}\n".format(num=len(issues_list)))
 outsummary.close()
-outgraphs = open(outpath + "/graphs.txt", "w")
+outgraphs = open(os.path.join(outpath, "graphs.txt"), "w")
 outgraphs.write("Issue Graphs for project {project}\n\n".format(project=PROJECTNAME))
 outgraphs.write(percent_graphs("Priority frequencies", priority_tags, ptags_list))
 outgraphs.write(percent_graphs("Type frequencies", type_tags, type_tags_all))
@@ -158,7 +158,7 @@ outgraphs.write(percent_graphs("Status frequencies", status_tags, status_tags_al
 outgraphs.write(percent_graphs("State frequencies", states, states_values))
 outgraphs.write(percent_graphs("Number of comments", comments_categories, comments_values))
 outgraphs.close()
-outissues = open(outpath + "/issues.txt", "w")
+outissues = open(os.path.join(outpath, "issues.txt"), "w")
 if options.sortby == "stars":
     issues_list.sort(key=lambda Issue: (Issue.stars), reverse=True)
 elif options.sortby == "comments":
