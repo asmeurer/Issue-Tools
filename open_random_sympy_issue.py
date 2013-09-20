@@ -12,7 +12,7 @@ import httplib2
 import csv
 import webbrowser
 import random
-from StringIO import StringIO
+from io import StringIO
 
 PROJECTNAME =  "sympy" # Change this to use a different Google Code project
 googlecode_prefix = "http://code.google.com/p/"
@@ -26,7 +26,7 @@ def get_url_content(url):
     return content
 
 def get_issues(issuecsv):
-    issuecsv = StringIO(issuecsv)
+    issuecsv = StringIO(issuecsv.decode('utf-8'))
     return [issue for issue in csv.DictReader(issuecsv)]
 
 def open_issue(issue_number):
